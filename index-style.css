@@ -1,0 +1,90 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f2f5;
+  margin: 0;
+  padding: 0;
+}
+
+/* Header bar */
+header {
+  background-color: #4caf50;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+/* White container box */
+.container {
+  margin: 30px auto;
+  max-width: 800px;
+  background: white;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+/* Circular photo */
+img {
+  display: block;
+  margin: 0 auto;
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
+/* Section heading */
+h2 {
+  color: #333;
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* List of assignments */
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  background: #e7f5ff;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 18px;
+  text-align: center;
+}
+
+li a {
+  color: purple;
+  text-decoration: underline;
+}
+
+li a:hover {
+  color: #6a0dad;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 15px;
+  font-size: 14px;
+  color: gray;
+  margin-top: 20px;
+}
+
+/* Footer content arranged horizontally */
+.footer-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  color: gray;
+  font-size: 14px;
+}
+
+/* Validator logo in footer */
+.validator-inline {
+  height: 30px;
+  width: auto;
+}
