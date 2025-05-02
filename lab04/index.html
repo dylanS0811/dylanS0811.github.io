@@ -31,6 +31,25 @@
       white-space: pre-wrap;
       margin: 1rem 0;
     }
+
+    .env-block {
+      background-color: #f3f4f6;
+      padding: 15px;
+      border-radius: 8px;
+      line-height: 1.6;
+      font-family: 'Courier New', monospace;
+    }
+
+    .env-block ol {
+      padding-left: 20px;
+    }
+
+    .env-block code {
+      background-color: #e5e7eb;
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-weight: bold;
+    }
   </style>
 </head>
 
@@ -40,28 +59,30 @@
   <div class="section">
     <h2>Code 1</h2>
     <div class="code-block">
-      let x;
-      var a = 5;
-      var b = 10;
-      var c = function(a, b, c) {
-      document.write(x);
-      document.write(a);
-      var f = function(a, b, c) {
-      b = a;
-      document.write(b);
-      b = c;
-      var x = 5;
-      }
-      f(a, b, c);
-      document.write(b);
-      var x = 10;
-      }
-      c(8, 9, 10);
-      document.write(b);
-      document.write(x);
+      <pre><code>
+        let x;
+        var a = 5;
+        var b = 10;
+        var c = function (a, b, c) {
+          document.write(x);
+          document.write(a);
+          var f = function (a, b, c) {
+            b = a;
+            document.write(b);
+            b = c;
+            var x = 5;
+          };
+          f(a, b, c);
+          document.write(b);
+          var x = 10;
+        };
+        c(8, 9, 10);
+        document.write(b);
+        document.write(x);
+      </code></pre>
     </div>
 
-    <h3>What will be printed in strict mode:</h3>
+    <h3>1.What will be printed in strict mode:</h3>
     <div class="output-block">
       undefined
       8
@@ -73,77 +94,112 @@
 
     <h3>Lexical Environment:</h3>
     <div class="env-block">
-      1. Global EC creation:
-      • Outer: null, LE: [{{ a: undefined, b: undefined, c: undefined }}], TDZ{{ x }}
+      <p><strong>1. Global EC Creation:</strong><br>
+        Outer: null<br>
+        LE: { a: undefined, b: undefined, c: undefined }<br>
+        TDZ: { x }</p>
 
-      2. Global EC execution:
-      • Outer: null, LE: [{{ x: undefined, a: 5, b: 10, c: fn }}], call C, output: [b:10, x:undefined], TDZ{{}}
+      <p><strong>2. Global EC Execution:</strong><br>
+        Outer: null<br>
+        LE: { a: 5, b: 10, c: fn, x: undefined }<br>
+        Call c(8,9,10)<br>
+        Output: <code>x: undefined</code>, <code>a: 8</code></p>
 
-      3. C FEC creation:
-      • Outer: global, LE: [{{ arguments: obj, a: 8, b: 9, c: 10, f: undefined, x: undefined }}], TDZ{{}}
+      <p><strong>3. C FEC Creation:</strong><br>
+        Outer: global<br>
+        LE: { arguments: obj, a: 8, b: 9, c: 10, f: undefined， x: undefined }<br>
+        TDZ: { }</p>
 
-      4. C FEC execution:
-      • Outer: global, LE: [{{ x: undefined, a: 8, b: 9, c: 10, f: fn }}], call f, output: [b:9], x:10, TDZ{{}}
+      <p><strong>4. C FEC Execution:</strong><br>
+        Outer: global<br>
+        LE: { arguments: obj, a: 8, b: 9, c: 10, f: fn, x: 10 }<br>
+        Call f(a,b,c)<br>
+        Output: <code>b: 8</code>, <code>b: 9</code></p>
 
-      5. F FEC creation:
-      • Outer: global, LE: [{{ arguments: obj, a: 8, b: 9, c: 10, x: undefined }}], TDZ{{}}
+      <p><strong>5. F FEC Creation:</strong><br>
+        Outer: C<br>
+        LE: { arguments: obj, a: 8, b: 9, c: 10, x: undefined }<br>
+        TDZ: { }</p>
 
-      6. F FEC execution:
-      • Outer: global, LE: [{{ b: 8, output:[b:8], b:10, x:5 }}], TDZ{{}}
+      <p><strong>6. F FEC Execution:</strong><br>
+        Outer: C<br>
+        LE: { arguments: obj, b: 10, x: 5 }<br>
+        Output (from inner function f): b: 8, then b: 9</p>
     </div>
+
   </div>
 
   <div class="section">
     <h2>Code 2</h2>
     <div class="code-block">
-      var x = 9;
-      function myFunction() {
-      return x * x;
-      }
-      document.write(myFunction());
-      x = 5;
-      document.write(myFunction());
+      <pre><code>
+        var x = 9;
+        function myFunction() {
+          return x * x;
+        }
+        document.write(myFunction());
+        x = 5;
+        document.write(myFunction());
+      </code></pre>
     </div>
 
-    <h3>What will be printed in strict mode:</h3>
-    <div class="output-block">
-      81
-      25
-    </div>
+    <h3>2. What will be printed in strict mode:</h3>
+    <pre class="output-block">
+    81
+    25
+    </pre>
 
     <h3>Lexical Environment:</h3>
     <div class="env-block">
-      1. Global EC creation:
-      • Outer: null, LE: [{{ x: undefined, myFunction: fn }}], TDZ{{}}
+      <p><strong>1. Global EC creation:</strong><br>
+        • Outer: null,<br>
+        • LE: { x: undefined, myFunction: fn }<br>
+        • TDZ: {}</p>
 
-      2. Global EC execution:
-      • Outer: null, LE: [{{ x: 9 }}], call myFunction, output:[81], x:5, call myFunction, output:[25]], TDZ{{}}
+      <p><strong>2. Global EC execution:</strong><br>
+        • Outer: null,<br>
+        • LE: { x: 9 },<br>
+        • call myFunction, output: [81],<br>
+        • x = 5,<br>
+        • call myFunction, output: [25]<br>
+        • TDZ: {}</p>
 
-      3. myFunction FEC creation:
-      • Outer: global, LE: [{{ arguments: {{}} }}], TDZ{{}}
+      <p><strong>3. myFunction FEC creation (first call):</strong><br>
+        • Outer: global,<br>
+        • LE: { arguments: obj }<br>
+        • TDZ: {}</p>
 
-      4. myFunction FEC execution:
-      • Outer: global, LE: [{{ arguments: {{}} }}], TDZ{{}}
+      <p><strong>4. myFunction FEC execution (first call):</strong><br>
+        • Outer: global,<br>
+        • LE: { arguments: obj }<br>
+        • TDZ: {}</p>
 
-      5. myFunction FEC creation:
-      • Outer: global, LE: [{{ arguments: {{}} }}], TDZ{{}}
+      <p><strong>5. myFunction FEC creation (second call):</strong><br>
+        • Outer: global,<br>
+        • LE: { arguments: obj }<br>
+        • TDZ: {}</p>
 
-      6. myFunction FEC execution:
-      • Outer: global, LE: [{{ arguments: {{}} }}], TDZ{{}}
+      <p><strong>6. myFunction FEC execution (second call):</strong><br>
+        • Outer: global,<br>
+        • LE: { arguments: obj }<br>
+        • TDZ: {}</p>
     </div>
+
   </div>
 
   <div class="section">
     <h2>Code 3</h2>
     <div class="code-block">
-      var foo = 1;
-      function bar() {
+      <pre><code>
+  var foo = 1;
+  function bar() {
       if (!foo) {
-      var foo = 10;
+          var foo = 10;
       }
       alert(foo);
-      }
-      bar();
+  }
+  bar();
+  </code></pre>
     </div>
 
     <h3>What will be printed in strict mode:</h3>
@@ -153,19 +209,29 @@
 
     <h3>Lexical Environment:</h3>
     <div class="env-block">
-      1. Global EC creation:
-      • Outer: null, LE: [{{ foo: undefined, bar: fn }}], TDZ{{}}
+      <p><strong>1. Global EC creation:</strong><br>
+        • Outer: null,<br>
+        • LE: {{ foo: undefined, bar: fn }}<br>
+        • TDZ: {{ }}</p>
 
-      2. Global EC execution:
-      • Outer: null, LE: [{{ foo: 1 }}], call bar, TDZ{{}}
+      <p><strong>2. Global EC execution:</strong><br>
+        • Outer: null,<br>
+        • LE: {{ foo: 1 }}<br>
+        • call bar<br>
+        • TDZ: {{ }}</p>
 
-      3. bar FEC creation:
-      • Outer: global, LE: [{{ arguments: {{}}, foo: undefined }}], TDZ{{}}
+      <p><strong>3. bar FEC creation:</strong><br>
+        • Outer: global,<br>
+        • LE: {{ arguments: obj, foo: undefined }}<br>
+        • TDZ: {{ }}</p>
 
-      4. bar FEC execution:
-      • Outer: global, LE: [{{ arguments: {{}}, foo: 10 }}, output[10]], TDZ{{}}
+      <p><strong>4. bar FEC execution:</strong><br>
+        • Outer: global,<br>
+        • LE: {{ arguments: obj, foo: 10 }}, output[10]<br>
+        • TDZ: {{ }}</p>
     </div>
   </div>
+
 
 </body>
 
