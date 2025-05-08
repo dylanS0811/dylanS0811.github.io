@@ -1,5 +1,6 @@
 import React from 'react';
-import ProductsList from './components/ProductsList.jsx';
+import ProductsListState from './components/ProductsListState.jsx';
+import ProductsListReducer from './components/ProductsListReducer.jsx';
 import './lab09.css';
 
 export default function Lab09App() {
@@ -7,7 +8,8 @@ export default function Lab09App() {
     <div className="lab09">
       <header>Lab09 — Product List</header>
       <div className="container">
-        <ProductsList />
+        <ProductsListState />
+        <ProductsListReducer />
       </div>
     </div>
   );
