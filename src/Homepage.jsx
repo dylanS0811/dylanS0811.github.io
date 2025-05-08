@@ -15,7 +15,7 @@ function Homepage() {
         <ul>
           <li>Day 1 — HTML</li>
           <li>
-            <a href="lab02/aboutme.html">Day 2 — CSS</a>
+            <Link to="/lab02">Day 2 — CSS</Link>
           </li>
           <li>
             <a href="lab03/index.html">Day 3 — JS</a>
