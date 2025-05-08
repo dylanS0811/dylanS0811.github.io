@@ -79,7 +79,7 @@ window.runQ2 = function () {
   if (existingImg) existingImg.remove();
 
   const img = document.createElement('img');
-  img.src = '../public/images/lab07-q2-diagram.png';
+  img.src = '/images/lab07-q2-diagram.png';
   img.alt = 'Prototype Chain Diagram';
   img.id = 'q2-image';
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
+
 import Homepage from './Homepage.jsx';
 import Lab02App from './lab02/Lab02App';
 import Lab03App from './lab03/Lab03App';
@@ -13,7 +14,7 @@ import Lab09App from './lab09/Lab09App';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/lab02" element={<Lab02App />} />
@@ -25,6 +26,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/lab08" element={<Lab08App />} />
         <Route path="/lab09" element={<Lab09App />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   </React.StrictMode>
 );
