@@ -18,22 +18,22 @@ function Homepage() {
             <Link to="/lab02">Day 2 — CSS</Link>
           </li>
           <li>
-            <a href="lab03/index.html">Day 3 — JS</a>
+            <Link to="/lab03">Day 3 — JS</Link>
           </li>
           <li>
-            <a href="lab04/index.html">Day 4 — Execution Context</a>
+            <Link to="/lab04">Day 4 — Execution Context</Link>
           </li>
           <li>
-            <a href="lab05/index.html">Day 5 — callcontext</a>
+            <Link to="/lab05">Day 5 — callcontext</Link>
           </li>
           <li>
-            <a href="lab06/index.html">Day 6 — Constructor Function</a>
+            <Link to="/lab06">Day 6 — Constructor Function</Link>
           </li>
           <li>
-            <a href="lab07/index.html">Day 7 — Classes</a>
+            <Link to="/lab07">Day 7 — Classes</Link>
           </li>
           <li>
-            <a href="lab08/index.html">Day 8 — Asynchronous Programming</a>
+            <Link to="/lab08">Day 8 — Asynchronous Programming</Link>
           </li>
           <li>
             <Link to="/lab09">Day 9 — React</Link>

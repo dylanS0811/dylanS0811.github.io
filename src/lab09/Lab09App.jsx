@@ -2,7 +2,7 @@ import React from 'react';
 import ProductsList from './components/ProductsList.jsx';
 import './lab09.css';
 
-function App() {
+export default function Lab09App() {
   return (
     <div className="lab09">
       <header>Lab09 — Product List</header>
@@ -12,5 +12,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

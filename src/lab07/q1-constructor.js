@@ -1,3 +1,4 @@
+// Constructor Function implementation
 function Question(qid, answer) {
   this.qid = qid;
   this.answer = answer;
@@ -37,7 +38,7 @@ Quiz.prototype.getAverageScore = function () {
   return total / this.students.length;
 };
 
-function runQ1() {
+window.runQ1 = function () {
   const existingImg = document.getElementById('q2-image');
   if (existingImg) existingImg.remove();
 
@@ -54,11 +55,13 @@ function runQ1() {
   const students = [student1, student2];
   const questions = [new Question(1, 'b'), new Question(2, 'a'), new Question(3, 'b')];
   const quiz = new Quiz(questions, students);
+
   const output = [
     'Q1: Constructor Function Version',
     'Student 10 Score: ' + quiz.scoreStudentBySid(10),
     'Student 11 Score: ' + quiz.scoreStudentBySid(11),
     'Average Score: ' + quiz.getAverageScore()
   ].join('\n');
+
   document.getElementById('output').innerText = output;
-}
+};

@@ -40,20 +40,20 @@ export default function Lab02App() {
       </div>
 
       <h2 className={styles.sectionTitle}>Fun Fact About My Neighbors</h2>
-      <p className={styles.description}>
+      <p className={`${styles.description} ${styles.centeredText}`}>
         <b>Furkan</b> is really good at the game :)
       </p>
 
       <div className={styles.validatorWrapper}>
         <a
-          href="https://validator.w3.org/check?url=https://dylans0811.github.io/lab02/aboutme.html"
+          href="https://validator.w3.org/check?url=https://dylans0811.github.io/lab02"
           target="_blank"
           rel="noreferrer"
         >
           <img src="/images/w3c-html5-logo.png" alt="Valid HTML!" />
         </a>
         <a
-          href="https://jigsaw.w3.org/css-validator/validator?uri=https://dylans0811.github.io/lab02/styleme.css"
+          href="https://jigsaw.w3.org/css-validator/validator?uri=https://dylans0811.github.io/lab02"
           target="_blank"
           rel="noreferrer"
         >

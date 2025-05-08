@@ -1,3 +1,4 @@
+// ES6 Class version
 class ClassQuestion {
   constructor(qid, answer) {
     this.qid = qid;
@@ -45,7 +46,7 @@ class ClassQuiz {
   }
 }
 
-function runQ2() {
+window.runQ2 = function () {
   const student1 = new ClassStudent(10);
   student1.addAnswer(new ClassQuestion(2, 'a'));
   student1.addAnswer(new ClassQuestion(3, 'b'));
@@ -81,10 +82,15 @@ function runQ2() {
   img.src = '../public/images/lab07-q2-diagram.png';
   img.alt = 'Prototype Chain Diagram';
   img.id = 'q2-image';
-  img.style.marginTop = '20px';
-  img.style.maxWidth = '100%';
+
+  // ✅ 样式设置（强烈建议这样写）
+  img.style.width = '700px'; // 设置宽度
+  img.style.height = 'auto'; // 高度自动等比缩放
+  img.style.display = 'block';
+  img.style.margin = '20px auto';
   img.style.border = '1px solid #ccc';
   img.style.borderRadius = '10px';
   img.style.boxShadow = '0 4px 10px rgba(0,0,0,0.1)';
+
   outputElem.insertAdjacentElement('afterend', img);
-}
+};

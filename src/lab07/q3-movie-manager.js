@@ -1,3 +1,4 @@
+// Movie Manager Class
 class Exercise3 {
   constructor() {
     this.movies = new Map();
@@ -48,7 +49,7 @@ class Exercise3 {
   }
 }
 
-function runQ3() {
+window.runQ3 = function () {
   const existingImg = document.getElementById('q2-image');
   if (existingImg) existingImg.remove();
 
@@ -58,11 +59,13 @@ function runQ3() {
   m.add_movie_in_genre('thriller', { id: '2', title: 'Arcadian' });
   m.update_movie_title_by_genre_and_movie_id('thriller', '1', 'The Bourne Identity');
   const title = m.get_movie_title_by_id('thriller', '1');
+
   const output = [
     'Q3: Movie Manager',
     'Updated Title: ' + title,
     'Deleted: ' + m.delete_movie_by_genre_and_movie_id('thriller', '2'),
     'After Deletion: ' + JSON.stringify(m.movies.get('thriller'))
   ].join('\n');
+
   document.getElementById('output').innerText = output;
-}
+};

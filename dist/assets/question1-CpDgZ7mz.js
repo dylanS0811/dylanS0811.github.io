@@ -1,0 +1,1 @@
+const s=e=>e.reduce((o,n)=>o+n*n,0);console.log("Sum of squares:",s([1,2,3]));const t=function(e){e.filter(o=>o%2!==0).forEach(o=>console.log("Odd:",o))};t([1,2,3,4,5]);function u(e,o,n){let c=[];for(let l=0;l<e;l++)c.push(o),[o,n]=[n,o+n];console.log("Fibonacci:",c.join(", "))}u(10,0,1);

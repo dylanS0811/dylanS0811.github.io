@@ -1,10 +1,10 @@
+/* src/lab07/lab07.module.css */
 body {
   font-family: Arial, sans-serif;
-  margin: 0;
   background-color: #f0f2f5;
 }
 
-header {
+.header {
   background-color: #4caf50;
   color: white;
   padding: 30px 0;
@@ -39,12 +39,7 @@ button:hover {
   background-color: #125ea3;
 }
 
-button:disabled {
-  background-color: #999;
-  cursor: not-allowed;
-}
-
-pre {
+.output {
   text-align: left;
   background-color: #f6f8fa;
   padding: 16px;
