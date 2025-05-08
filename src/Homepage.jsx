@@ -38,6 +38,9 @@ function Homepage() {
           <li>
             <Link to="/lab09">Day 9 — React</Link>
           </li>
+          <li>
+            <Link to="/lab10">Day 10 — Communication</Link>
+          </li>
         </ul>
       </div>
 

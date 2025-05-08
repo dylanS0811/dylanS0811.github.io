@@ -11,6 +11,7 @@ import Lab06App from './lab06/Lab06App';
 import Lab07App from './lab07/Lab07App';
 import Lab08App from './lab08/Lab08App';
 import Lab09App from './lab09/Lab09App';
+import Lab10App from './lab10/Lab10App';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -25,6 +26,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/lab07" element={<Lab07App />} />
         <Route path="/lab08" element={<Lab08App />} />
         <Route path="/lab09" element={<Lab09App />} />
+        <Route path="/lab10" element={<Lab10App />} />
       </Routes>
     </HashRouter>
   </React.StrictMode>
