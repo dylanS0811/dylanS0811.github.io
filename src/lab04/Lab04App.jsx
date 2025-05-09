@@ -52,6 +52,8 @@ document.write(x);        // prints undefined`}</code>
             <br />
             Outer: null
             <br />
+            this: window
+            <br />
             LE: &#123;a: undefined, b: undefined, c: undefined&#125;
             <br />
             TDZ: &#123;x&#125;
@@ -59,29 +61,57 @@ document.write(x);        // prints undefined`}</code>
           <p>
             <strong>2. Global EC Execution:</strong>
             <br />
+            Outer: null
+            <br />
+            this: window
+            <br />
             LE: &#123;a: 5, b: 10, c: fn, x: undefined&#125;
             <br />
-            Output: x: undefined, a: 8
+            TDZ: &#123;&#125;
           </p>
           <p>
             <strong>3. C FEC Creation:</strong>
             <br />
-            LE: &#123;a: 8, b: 9, c: 10, f: undefined, x: undefined&#125;
+            Outer: Global
+            <br />
+            this: undefined
+            <br />
+            LE: &#123;arguments: object, a: 8, b: 9, c: 10, f: undefined, x: undefined&#125;
+            <br />
+            TDZ: &#123;&#125;
           </p>
           <p>
             <strong>4. C FEC Execution:</strong>
             <br />
-            Output: b: 8, b: 9
+            Outer: Global
+            <br />
+            this: undefined
+            <br />
+            LE: &#123;arguments: object, a: 8, b: 9, c: 10, f: fn, x: 10&#125;
+            <br />
+            TDZ: &#123;&#125;
           </p>
           <p>
             <strong>5. F FEC Creation:</strong>
             <br />
-            LE: &#123;a: 8, b: 9, c: 10, x: undefined&#125;
+            Outer: c
+            <br />
+            this: undefined
+            <br />
+            LE: &#123;arguments: object, a: 8, b: 9, c: 10, x: undefined&#125;
+            <br />
+            TDZ: &#123;&#125;
           </p>
           <p>
             <strong>6. F FEC Execution:</strong>
             <br />
-            LE: &#123;b: 10, x: 5&#125;
+            Outer: c
+            <br />
+            this: undefined
+            <br />
+            LE: &#123;arguments: object, a: 8, b: 10, c: 10, x: 5&#125;
+            <br />
+            TDZ: &#123;&#125;
           </p>
         </div>
       </div>
@@ -113,11 +143,68 @@ document.write(myFunction());`}</code>
           <p>
             <strong>1. Global EC creation:</strong>
             <br />
+            Outer: null
+            <br />
+            this: window
+            <br />
             LE: &#123;x: undefined, myFunction: fn&#125;
+            <br />
+            TDZ: &#123;&#125;
           </p>
           <p>
             <strong>2. Global EC execution:</strong>
-            <br />x = 9 → myFunction() → 81 → x = 5 → myFunction() → 25
+            <br />
+            Outer: null
+            <br />
+            this: window
+            <br />
+            LE: &#123;x: undefined, myFunction: fn&#125;
+            <br />
+            TDZ: &#123;&#125;
+          </p>
+          <p>
+            <strong>3. FEC (myFunction first call) creation:</strong>
+            <br />
+            Outer: Global
+            <br />
+            this: undefined
+            <br />
+            LE: &#123;arguments: object&#125;
+            <br />
+            TDZ: &#123;&#125;
+          </p>
+          <p>
+            <strong>4. FEC (myFunction first call) execution:</strong>
+            <br />
+            Outer: Global
+            <br />
+            this: undefined
+            <br />
+            LE: &#123;arguments: object&#125;
+            <br />
+            TDZ: &#123;&#125;
+          </p>
+          <p>
+            <strong>5. FEC (myFunction second call) creation:</strong>
+            <br />
+            Outer: Global
+            <br />
+            this: undefined
+            <br />
+            LE: &#123;arguments: object&#125;
+            <br />
+            TDZ: &#123;&#125;
+          </p>
+          <p>
+            <strong>6. FEC (myFunction second call) execution:</strong>
+            <br />
+            Outer: Global
+            <br />
+            this: undefined
+            <br />
+            LE: &#123;arguments: object&#125;
+            <br />
+            TDZ: &#123;&#125;
           </p>
         </div>
       </div>
@@ -144,14 +231,48 @@ bar();`}</code>
         <h3 className={styles.heading3}>Lexical Environment:</h3>
         <div className={styles.envBlock}>
           <p>
-            <strong>Global EC:</strong>
+            <strong>1. Global EC creation:</strong>
             <br />
-            foo: undefined, bar: fn
+            Outer: null
+            <br />
+            this: window
+            <br />
+            LE: &#123;foo: undefined, bar: fn&#125;
+            <br />
+            TDZ: &#123;&#125;
           </p>
           <p>
-            <strong>bar Execution:</strong>
+            <strong>2. Global EC execution:</strong>
             <br />
-            foo = 10 → alert(10)
+            Outer: null
+            <br />
+            this: window
+            <br />
+            LE: &#123;foo: 1, bar: fn&#125;
+            <br />
+            TDZ: &#123;&#125;
+          </p>
+          <p>
+            <strong>3. FEC bar creation:</strong>
+            <br />
+            Outer: Global
+            <br />
+            this: undefined
+            <br />
+            LE: &#123;arguments: object, foo: undefined&#125;
+            <br />
+            TDZ: &#123;&#125;
+          </p>
+          <p>
+            <strong>4. FEC bar execution:</strong>
+            <br />
+            Outer: Global
+            <br />
+            this: undefined
+            <br />
+            LE: &#123;arguments: object, foo: 10&#125;
+            <br />
+            TDZ: &#123;&#125;
           </p>
         </div>
       </div>
