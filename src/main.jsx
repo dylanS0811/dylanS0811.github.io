@@ -1,6 +1,7 @@
+// src/main.jsx
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { HashRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Homepage from './Homepage.jsx';
 import Lab02App from './lab02/Lab02App';
@@ -12,10 +13,11 @@ import Lab07App from './lab07/Lab07App';
 import Lab08App from './lab08/Lab08App';
 import Lab09App from './lab09/Lab09App';
 import Lab10App from './lab10/Lab10App';
+import Lab11App from './lab11/Lab11App';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <HashRouter>
+    <BrowserRouter>
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/lab02" element={<Lab02App />} />
@@ -27,7 +29,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/lab08" element={<Lab08App />} />
         <Route path="/lab09" element={<Lab09App />} />
         <Route path="/lab10" element={<Lab10App />} />
+        <Route path="/lab11/*" element={<Lab11App />} />
       </Routes>
-    </HashRouter>
+    </BrowserRouter>
   </React.StrictMode>
 );

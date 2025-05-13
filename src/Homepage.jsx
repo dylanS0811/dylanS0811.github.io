@@ -41,6 +41,9 @@ function Homepage() {
           <li>
             <Link to="/lab10">Day 10 — Communication</Link>
           </li>
+          <li>
+            <Link to="/lab11">Day 11 — Router</Link>
+          </li>
         </ul>
       </div>
 

@@ -19,6 +19,7 @@ export const BookProvider = ({ children }) => {
       const data = await res.json();
       setBooks(data);
     } catch (err) {
+      console.error(err);
       setError('Failed to fetch books');
     } finally {
       setLoading(false);
@@ -44,6 +45,7 @@ export const BookProvider = ({ children }) => {
 
       getBooks(); // 刷新列表
     } catch (err) {
+      console.error(err);
       setError('Failed to reset books');
     } finally {
       setLoading(false);
@@ -60,6 +62,7 @@ export const BookProvider = ({ children }) => {
       const newBook = await res.json();
       setBooks((prev) => [...prev, newBook]);
     } catch (err) {
+      console.error(err);
       setError('Failed to add book');
     }
   };
@@ -74,6 +77,7 @@ export const BookProvider = ({ children }) => {
       const data = await res.json();
       setBooks((prev) => prev.map((book) => (book.id === id ? data : book)));
     } catch (err) {
+      console.error(err);
       setError('Failed to update book');
     }
   };
@@ -83,6 +87,7 @@ export const BookProvider = ({ children }) => {
       await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
       setBooks((prev) => prev.filter((book) => book.id !== id));
     } catch (err) {
+      console.error(err);
       setError('Failed to delete book');
     }
   };
